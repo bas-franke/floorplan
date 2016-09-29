@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta content="utf-8" http-equiv="encoding">
+  <title>Floorplan</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/floorplan.css">
+  <link rel="stylesheet" type="text/css" href="css/loading.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+</head>
+
+<body>
+  <div id="floorplan-container">
+
+    <div class="floorplan">
+
+
+      <div id="debug">console</div>
+      <div class="svgContainer" id="svgContainer">
+        <div id="pointer-container">
+          <div id="pointer-hover"><!-- --></div>
+          <div id="pointer"><!-- --><!-- --></div>
+        </div>
+        <object id="svg" data="assets/z.svg" type="image/svg+xml">
+          <!-- -->
+        </object>
+        <div class="overlay" id="overlay" oncontextmenu="return false;">
+          <div class="sk-folding-cube" id="loading">
+            <div class="sk-cube1 sk-cube"><!-- --></div>
+            <div class="sk-cube2 sk-cube"><!-- --></div>
+            <div class="sk-cube4 sk-cube"><!-- --></div>
+            <div class="sk-cube3 sk-cube"><!-- --></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidemenu" id="sidemenu" oncontextmenu="return false;">
+        <div class="menucontainer">
+          <div class="no-padding selector-choice">
+            <span class="halfmenu selected-mode fa fa-hand-rock-o" id="grabber"><!-- --></span><span class="halfmenu  fa fa-hand-pointer-o" id="selector"><!-- --></span><span class="recenter  fa fa-dot-circle-o" id="recenter"><!-- --></span><span class="help fa fa-info-circle" id="help"><!-- --></span>
+          </div>
+          <div>
+            <input value="0" max="100" min="0" class="slider" id="slider" type="range" />
+          </div>
+          <div>
+            <ul id="settings" class="settings">
+              <li id="measurements">measurements</li>
+              <li class="active" id="arrows">arrows</li>
+            </ul>
+          </div>
+          <div>
+            <div>
+              <ul class="newmenu"><!-- --></ul>
+            </div>
+            </div>
+            <div class="info-selected" id="info-selected">
+          </div>
+        </div><div class="toggle"><i class="fa fa-angle-double-left left"><!-- --></i><i class="fa fa-angle-double-right right"><!-- --></i><!-- --></div>
+      </div>
+
+
+      <section id="help-overlay">
+        <h1>Info/help</h1>
+        <article>
+          <h3>Test versie</h3>
+          <p>
+            De huidige versie van deze applicatie is een test versie, er zijn op dit moment nog 'bugs' waaraan worden gewerkt. Een aantal hiervan zijn;
+          </p>
+          <p>
+            <ul>
+              <li>In en uitzoom werkt niet als gewenst.</li>
+              <li>De teksten van afmetingen staan niet altijd op de goede plaats.</li>
+              <li>Niet ieder element is correct weergegeven.</li>
+            </ul>
+          </p>
+          <p>
+            De applicatie is nog in ontwikkeling en er zullen meer functies worden toegevoegd.
+          </p>
+          <p>
+            Wanneer de applicatie niet meer goed werkt kan het helpen om te pagina te verversen om problemen te verhelpen.
+          </p>
+          <p>
+            <em>Deze applicatie is op dit moment voornamelijk getest in de webbrowser 'Google Chrome', en kan problemen ondervinden in andere browsers.</em>
+          </p>
+        </article>
+        <article>
+          <h3>Navigatie</h3>
+          <p>
+            <h4><div class="fa fa-hand-rock-o"><!-- --></div> Navigator</h4>
+            Met de 'navigator' is het mogenlijk om de plattegrond te:
+            <ul>
+              <li>Positioneren (linker muisknop ingedrukt houden).</li>
+              <li>In- en uitzoomen(scroll wiel).</li>
+              <li>Draaien (Rechter muisknop ingedrukt houden en de muis naar boven of beneden te bewegen).</li>
+            </ul>
+          </p>
+          <p>
+            <h4><div class="fa fa-hand-pointer-o"><!-- --></div> Aanwijzer</h4>
+            Met de 'aanwijzer' kunnen onderdelen in de plattegrond worden geselecteerd, in het linker menu wordt er meer informatie getoond over het geselecteerde element.
+          </p>
+          <p>
+            <h4>
+              <div class="fa fa fa-dot-circle-o"><!-- --></div> Centreren</h4>
+            Met deze knop kan de plattegrond worden teruggeplaatst naar het midden van het scherm.
+          </p>
+          <p>
+            <h4>
+              <div class="fa fa-hand-pointer-o"><!-- --></div>
+              <div class="fa fa-hand-rock-o"><!-- --></div> Hotkey</h4>
+            Door de CTRL knop ingedrukt te houden kan er tijdelijk tussen de pointer en de grabber worden gewisseld.
+          </p>
+        </article>
+        <article>
+          <h3>Secties</h3>
+          <input value="0" max="100" min="0" class="slider" type="range"><!-- --></input>
+          <p>
+            Met de 'secties' balk kunnen verdiepingen uit elkaar worden geschoven en geeft op deze manier een overzicht van alle geselecteerde verdiepingen.
+          </p>
+        </article>
+        <article>
+          <h3>Verdiepingen</h3>
+          <p>
+            <ul class="storeys">
+              <li class="active">0</li>
+              <li class="active">1</li>
+              <li class="active">2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+            </ul>
+          </p>
+          <p>
+            Door met de linker muisknop op een verdieping te klikken kan in de plattegrond een verdieping worden getoond of verborgen.
+          </p>
+          <p>
+            Met de rechter muisknop kunnen alle verdiepingen verborgen worden behalve degene die is geselecteerd.
+          </p>
+          <p>
+            Door de rechtermuisknop te gebruiken op een verdieping die als enige is geselecteerd worden alle verdiepingen weer weergegeven.
+          </p>
+        </article>
+        <article>
+          <h3>Selectie menu</h3>
+          <p>
+            <table id="storey-0" style="font-size: 10px; width: 100%;">
+              <tbody>
+                <tr class="storey-header">
+                  <th style="text-align: center; border-bottom: 1px solid #000;
+                  padding: 1em;">Storey 0</th>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 1px solid #aaaaff; padding: 1em;">31_WI_3_F_AM_Y:Merk_E:822698</td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 1px solid #aaaaff; padding: 1em;">31_WI_3_F_AM_Y:Merk_E:832219</td>
+                </tr>
+              </tbody>
+            </table>
+          </p>
+          <p>
+            In het selectie menu kunnen onderdelen zoals muren, ramen en ruimtes worden geselecteerd.
+          </p>
+          <p>
+            Een geselecteerd onderdeel wordt uitgelicht en aangegeven met een pijl in de plattegrond.
+          </p>
+        </article>
+      </section>
+    </div>
+
+  </div>
+</body>
+
+</html>
+
+<script src="js/vendor/JQuery.js"><!-- --></script>
+<script src="js/vendor/underscore-min.js"><!-- --></script>
+
+<script src="js/floorplan/floorplan.js"><!-- --></script>
+
+<script src="js/floorplan/settings.js"><!-- --></script>
+<script src="js/floorplan/camera.js"><!-- --></script>
+<script src="js/floorplan/xmlreader.js"><!-- --></script>
+<script src="js/floorplan/selector.js"><!-- --></script>
+<script src="js/floorplan/menu.js"><!-- --></script>
+<script src="js/floorplan/svgstyle.js"><!-- --></script>
+<script src="js/floorplan/application.js"><!-- --></script>
+
+<script src="js/main.js"><!-- --></script>
